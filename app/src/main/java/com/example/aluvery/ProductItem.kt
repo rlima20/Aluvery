@@ -21,20 +21,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.aluvery.extensions.toBrazilianCurrency
 import com.example.aluvery.ui.theme.Purple500
 import com.example.aluvery.ui.theme.Teal200
 
 @Composable
-fun ProductItem(
-    text: String,
-    value: String,
-    image: Int
-) {
+fun ProductItem(product: Product) {
     Surface(
         modifier = Modifier.padding(8.dp),
         shape = RoundedCornerShape(15.dp),
@@ -45,9 +43,9 @@ fun ProductItem(
                 .heightIn(250.dp, 300.dp)
                 .width(200.dp)
         ) {
-            CardSection(image)
+            CardSection(product.image)
             Spacer(modifier = Modifier.height(50.dp))
-            TextSection(text, value)
+            TextSection(product.name, product.price.toBrazilianCurrency())
         }
     }
 }
@@ -74,7 +72,8 @@ private fun CardSection(image: Int) {
                 .offset(y = (50).dp)
                 .size(100.dp)
                 .clip(shape = CircleShape)
-                .align(alignment = Alignment.BottomCenter)
+                .align(alignment = Alignment.BottomCenter),
+            contentScale = ContentScale.Crop
         )
     }
 }

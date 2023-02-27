@@ -11,21 +11,29 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-private val ITEM_TEXT = LoremIpsum(50).values.first()
-private const val ITEM_VALUE = "R$ 14,99"
-private const val ITEM_IMAGE = R.drawable.ic_launcher_background
+import java.math.BigDecimal
 
 @Composable
 fun ProductSection() {
-    val productItemList = mutableListOf<Item>()
-
-    for (item in 1..5) {
-        productItemList.add(Item(ITEM_TEXT, ITEM_VALUE, ITEM_IMAGE))
-    }
+    val productItemList = mutableListOf(
+        Product(
+            "Hamburguer",
+            BigDecimal("12.99"),
+            R.drawable.burger
+        ),
+        Product(
+            "Pizza",
+            BigDecimal("19.99"),
+            R.drawable.pizza
+        ),
+        Product(
+            "Batata frita",
+            BigDecimal("7.99"),
+            R.drawable.fries
+        )
+    )
 
     Column {
         Text(
@@ -48,12 +56,14 @@ fun ProductSection() {
 }
 
 @Composable
-private fun BuildProductList(productItemList: MutableList<Item>) {
-    productItemList.forEach {
+private fun BuildProductList(productItemList: MutableList<Product>) {
+    productItemList.forEach { product ->
         ProductItem(
-            it.text,
-            it.value,
-            it.image
+            Product(
+                product.name,
+                product.price,
+                product.image
+            )
         )
     }
 }

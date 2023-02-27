@@ -11,18 +11,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import com.example.aluvery.ui.theme.AluveryTheme
+import java.math.BigDecimal
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AluveryTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    ProductSection()
-                }
+            Aluvery()
+        }
+    }
+
+    @Composable
+    private fun Aluvery() {
+        AluveryTheme {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colors.background
+            ) {
+                ProductSection()
             }
         }
     }
@@ -32,9 +38,11 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ProductItemPreview() {
     ProductItem(
-        LoremIpsum(50).values.first(),
-        "R$ 14,99",
-        R.drawable.ic_launcher_background
+        Product(
+            LoremIpsum(50).values.first(),
+            BigDecimal("14.6"),
+            R.drawable.ic_launcher_background
+        )
     )
 }
 
