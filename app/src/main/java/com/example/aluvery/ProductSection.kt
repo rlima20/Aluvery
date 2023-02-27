@@ -37,14 +37,13 @@ fun ProductSection() {
 
     Column {
         Text(
-            modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp),
             text = "Promoções",
             fontSize = 20.sp,
             fontWeight = FontWeight(400)
         )
         Row(
             modifier = Modifier
-                .padding(bottom = 16.dp)
                 .fillMaxWidth()
                 .horizontalScroll(rememberScrollState())
                 .padding(horizontal = 8.dp),
