@@ -1,4 +1,4 @@
-package com.example.aluvery
+package com.example.aluvery.components
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -11,8 +11,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.aluvery.R
 import java.math.BigDecimal
 
 @Composable
@@ -65,4 +67,10 @@ private fun BuildProductList(productItemList: MutableList<Product>) {
             )
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ProductSectionPreview() {
+    ProductSection()
 }

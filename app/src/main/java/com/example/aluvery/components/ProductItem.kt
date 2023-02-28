@@ -1,4 +1,4 @@
-package com.example.aluvery
+package com.example.aluvery.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -25,11 +25,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.aluvery.R
 import com.example.aluvery.extensions.toBrazilianCurrency
 import com.example.aluvery.ui.theme.Purple500
 import com.example.aluvery.ui.theme.Teal200
+import java.math.BigDecimal
 
 @Composable
 fun ProductItem(product: Product) {
@@ -94,4 +98,16 @@ private fun TextSection(text: String, value: String) {
             fontWeight = FontWeight(400)
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ProductItemPreview() {
+    ProductItem(
+        Product(
+            LoremIpsum(50).values.first(),
+            BigDecimal("14.6"),
+            R.drawable.ic_launcher_background
+        )
+    )
 }
