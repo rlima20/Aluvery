@@ -1,4 +1,4 @@
-package com.example.aluvery.components
+package com.example.aluvery.model
 
 import androidx.annotation.DrawableRes
 import java.math.BigDecimal

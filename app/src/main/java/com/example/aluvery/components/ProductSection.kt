@@ -14,33 +14,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.aluvery.R
-import java.math.BigDecimal
+import com.example.aluvery.model.Product
+import com.example.aluvery.model.productItemList
 
 @Composable
-fun ProductSection() {
-    val productItemList = mutableListOf(
-        Product(
-            "Hamburguer",
-            BigDecimal("12.99"),
-            R.drawable.burger
-        ),
-        Product(
-            "Pizza",
-            BigDecimal("19.99"),
-            R.drawable.pizza
-        ),
-        Product(
-            "Batata frita",
-            BigDecimal("7.99"),
-            R.drawable.fries
-        )
-    )
-
+fun ProductSection(
+    title: String,
+    productList: List<Product>
+) {
     Column {
         Text(
             modifier = Modifier.padding(start = 16.dp, end = 16.dp),
-            text = "Promoções",
+            text = title,
             fontSize = 20.sp,
             fontWeight = FontWeight(400)
         )
@@ -51,13 +36,13 @@ fun ProductSection() {
                 .padding(horizontal = 8.dp),
             horizontalArrangement = Arrangement.Center
         ) {
-            BuildProductList(productItemList)
+            BuildProductList(productList)
         }
     }
 }
 
 @Composable
-private fun BuildProductList(productItemList: MutableList<Product>) {
+private fun BuildProductList(productItemList: List<Product>) {
     productItemList.forEach { product ->
         ProductItem(
             Product(
@@ -72,5 +57,5 @@ private fun BuildProductList(productItemList: MutableList<Product>) {
 @Preview(showBackground = true)
 @Composable
 fun ProductSectionPreview() {
-    ProductSection()
+    ProductSection("Teste", productItemList)
 }

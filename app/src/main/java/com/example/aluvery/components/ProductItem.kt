@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aluvery.R
 import com.example.aluvery.extensions.toBrazilianCurrency
+import com.example.aluvery.model.Product
 import com.example.aluvery.ui.theme.Purple500
 import com.example.aluvery.ui.theme.Teal200
 import java.math.BigDecimal
