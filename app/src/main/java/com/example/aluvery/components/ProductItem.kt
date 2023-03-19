@@ -1,6 +1,5 @@
 package com.example.aluvery.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,10 +29,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.aluvery.R
 import com.example.aluvery.extensions.toBrazilianCurrency
 import com.example.aluvery.model.Product
 import java.math.BigDecimal
+
+val imageSize = 100.dp
 
 @Composable
 fun ProductItem(product: Product) {
@@ -47,7 +49,7 @@ fun ProductItem(product: Product) {
                 .heightIn(250.dp, 300.dp)
                 .width(200.dp)
         ) {
-            CardSection(product.image)
+            CardSection(product)
             Spacer(modifier = Modifier.height(50.dp))
             TextSection(product.name, product.price.toBrazilianCurrency())
         }
@@ -55,7 +57,7 @@ fun ProductItem(product: Product) {
 }
 
 @Composable
-private fun CardSection(image: String?) {
+private fun CardSection(product: Product) {
     Box(
         modifier = Modifier
             .height(100.dp)
@@ -69,15 +71,16 @@ private fun CardSection(image: String?) {
             )
             .fillMaxWidth()
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.placeholder),
+        AsyncImage(
+            model = product.image,
             contentDescription = null,
             Modifier
-                .offset(y = (50).dp)
-                .size(100.dp)
+                .size(imageSize)
+                .offset(y = imageSize / 2)
                 .clip(shape = CircleShape)
-                .align(alignment = Alignment.BottomCenter),
-            contentScale = ContentScale.Crop
+                .align(Alignment.BottomCenter),
+            contentScale = ContentScale.Crop,
+            placeholder = painterResource(id = R.drawable.placeholder),
         )
     }
 }
