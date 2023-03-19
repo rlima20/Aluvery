@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.aluvery.model.Product
-import com.example.aluvery.model.sampleProducts
 import com.example.aluvery.model.sampleSections
 import com.example.aluvery.ui.theme.AluveryTheme
 
