@@ -15,12 +15,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aluvery.model.Product
-import com.example.aluvery.model.productItemList
+import com.example.aluvery.model.sampleProducts
 
 @Composable
-fun ProductSection(
+fun ProductsSection(
     title: String,
-    productList: List<Product>
+    products: List<Product>
 ) {
     Column {
         Text(
@@ -36,7 +36,7 @@ fun ProductSection(
                 .padding(horizontal = 8.dp),
             horizontalArrangement = Arrangement.Center
         ) {
-            BuildProductList(productList)
+            BuildProductList(products)
         }
     }
 }
@@ -57,5 +57,5 @@ private fun BuildProductList(productItemList: List<Product>) {
 @Preview(showBackground = true)
 @Composable
 fun ProductSectionPreview() {
-    ProductSection("Teste", productItemList)
+    ProductsSection("Teste", sampleProducts)
 }

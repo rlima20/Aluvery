@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -32,8 +33,6 @@ import androidx.compose.ui.unit.sp
 import com.example.aluvery.R
 import com.example.aluvery.extensions.toBrazilianCurrency
 import com.example.aluvery.model.Product
-import com.example.aluvery.ui.theme.Purple500
-import com.example.aluvery.ui.theme.Teal200
 import java.math.BigDecimal
 
 @Composable
@@ -56,22 +55,22 @@ fun ProductItem(product: Product) {
 }
 
 @Composable
-private fun CardSection(image: Int) {
+private fun CardSection(image: String?) {
     Box(
         modifier = Modifier
             .height(100.dp)
             .background(
                 brush = Brush.horizontalGradient(
                     colors = listOf(
-                        Purple500,
-                        Teal200
+                        MaterialTheme.colors.primary,
+                        MaterialTheme.colors.secondary
                     )
                 )
             )
             .fillMaxWidth()
     ) {
         Image(
-            painter = painterResource(id = image),
+            painter = painterResource(id = R.drawable.placeholder),
             contentDescription = null,
             Modifier
                 .offset(y = (50).dp)
@@ -108,7 +107,6 @@ fun ProductItemPreview() {
         Product(
             LoremIpsum(50).values.first(),
             BigDecimal("14.6"),
-            R.drawable.ic_launcher_background
         )
     )
 }

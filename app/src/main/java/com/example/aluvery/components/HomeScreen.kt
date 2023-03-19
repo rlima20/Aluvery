@@ -10,11 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.aluvery.model.productItemList
+import com.example.aluvery.model.Product
+import com.example.aluvery.model.sampleProducts
+import com.example.aluvery.model.sampleSections
 import com.example.aluvery.ui.theme.AluveryTheme
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    sections: Map<String, List<Product>>
+) {
     AluveryTheme {
         Surface {
             Column(
@@ -23,9 +27,14 @@ fun HomeScreen() {
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                ProductSection("Promoções", productItemList)
-                ProductSection("Doces", productItemList)
-                ProductSection("Bebidas", productItemList)
+                for (section in sections) {
+                    val title = section.key
+                    val products = section.value
+                    ProductsSection(
+                        title = title,
+                        products = products
+                    )
+                }
             }
         }
     }
@@ -34,5 +43,5 @@ fun HomeScreen() {
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen()
+    HomeScreen(sampleSections)
 }
